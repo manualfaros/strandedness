@@ -1,0 +1,10 @@
+# Crear archivo con la información del strandeness de cada bam, para poder legir la coliuumna correcta después de mapear con STAR. Run este script en la carpeta con los bam.
+for bam_file in *.bam; do
+  echo "Processing $bam_file"
+  echo "===== $bam_file =====" >> all_strandeness.txt
+  infer_experiment.py \
+    -i "$bam_file" \
+    -r /home/usuario/ATA_small_proteins/Costa_24/Sa_gff3.bed \
+    >> all_strandeness.txt
+  echo -e "\n" >> all_strandeness.txt
+done
